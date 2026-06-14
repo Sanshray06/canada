@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { supabase } from "@/lib/supabase";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 const LEADS_FILE = path.join(DATA_DIR, "leads.json");
@@ -29,8 +30,18 @@ export async function GET(req: NextRequest) {
   if (token !== ADMIN_PASSWORD) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
+const { data, error } = await supabase
+  .from("leads")
+  .select("*")
+  .order("submitted_at", {
+    ascending: false,
+  });
 
-  const leads = readLeads();
+if (error) {
+  throw error;
+}
+
+const leads = data;
   return NextResponse.json({ leads, total: leads.length });
 }
 
@@ -43,15 +54,23 @@ export async function PATCH(req: NextRequest) {
   const body = await req.json();
   const { id, status } = body;
 
-  const leads = readLeads();
-  const idx = leads.findIndex((l: { id: string }) => l.id === id);
-  if (idx === -1) {
-    return NextResponse.json({ error: "Lead not found" }, { status: 404 });
-  }
+  const { data, error } = await supabase
+  .from("leads")
+  .update({
+    status,
+    updated_at: new Date().toISOString(),
+  })
+  .eq("id", id)
+  .select()
+  .single();
+  //const idx = leads.findIndex((l: { id: string }) => l.id === id);
+  // if (idx === -1) {
+  //   return NextResponse.json({ error: "Lead not found" }, { status: 404 });
+  // }
 
-  leads[idx].status = status;
-  leads[idx].updatedAt = new Date().toISOString();
-  writeLeads(leads);
+  // leads[idx].status = status;
+  // leads[idx].updatedAt = new Date().toISOString();
+  // writeLeads(leads);
 
-  return NextResponse.json({ success: true, lead: leads[idx] });
+  return NextResponse.json({ success: true});
 }

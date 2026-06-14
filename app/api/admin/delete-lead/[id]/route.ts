@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { supabase } from "@/lib/supabase";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 const LEADS_FILE = path.join(DATA_DIR, "leads.json");
@@ -24,18 +25,19 @@ export async function DELETE(
   req: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  const token = req.headers.get("x-admin-token");
-  if (token !== ADMIN_PASSWORD) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  const { error } = await supabase
+  .from("leads")
+  .delete()
+  .eq("id", params.id);
 
-  const leads = readLeads();
-  const filtered = leads.filter((l: { id: string }) => l.id !== params.id);
+if (error) {
+  return NextResponse.json(
+    { error: error.message },
+    { status: 500 }
+  );
+}
 
-  if (filtered.length === leads.length) {
-    return NextResponse.json({ error: "Lead not found" }, { status: 404 });
-  }
-
-  writeLeads(filtered);
-  return NextResponse.json({ success: true });
+return NextResponse.json({
+  success: true,
+});
 }
