@@ -16,20 +16,19 @@ export default function ContactForm() {
   const [state, setState] = useState<FormState>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
+  // ✅ All transport-only services
   const services = [
-    "Trasnportation",
-    "Mobile Apps",
-    "Cloud & DevOps",
-    "AI & Automation",
-    "Cybersecurity",
-    "UI/UX Design",
+    "Airport Transfer",
+    "Corporate Transportation",
+    "Long Distance Travel",
+    "Event Transportation",
+    "Executive Chauffeur Service",
+    "Hotel & Cruise Transfer",
     "Other / Not Sure",
   ];
 
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -71,13 +70,11 @@ export default function ContactForm() {
   return (
     <section
       id="contact"
-      className="py-24"
-      style={{
-        background: "linear-gradient(180deg, #F0F4FF 0%, #fff 100%)",
-      }}
+      className="py-16 sm:py-24"
+      style={{ background: "linear-gradient(180deg, #F0F4FF 0%, #fff 100%)" }}
     >
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid lg:grid-cols-5 gap-16 items-start">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="grid lg:grid-cols-5 gap-10 sm:gap-16 items-start">
           {/* Left info panel */}
           <div className="lg:col-span-2">
             <span
@@ -96,22 +93,22 @@ export default function ContactForm() {
               style={{
                 fontFamily: "Syne, sans-serif",
                 fontWeight: 800,
-                fontSize: "clamp(28px, 3.5vw, 42px)",
+                fontSize: "clamp(26px, 3.5vw, 42px)",
                 color: "#0A1628",
                 marginTop: "12px",
                 lineHeight: 1.15,
-                marginBottom: "20px",
+                marginBottom: "18px",
               }}
             >
-              Let&apos;s Talk About Your Project
+              Let&apos;s Talk About Your Trip
             </h2>
             <p
               style={{
                 color: "#6B7A99",
-                fontSize: "16px",
+                fontSize: "clamp(14px, 2vw, 16px)",
                 lineHeight: 1.8,
                 fontFamily: "Inter, sans-serif",
-                marginBottom: "40px",
+                marginBottom: "32px",
               }}
             >
               Fill in the form and we&apos;ll get back to you within 1 hour during
@@ -120,7 +117,7 @@ export default function ContactForm() {
             </p>
 
             {/* Contact details */}
-            <div className="space-y-5">
+            <div className="space-y-4 sm:space-y-5">
               {[
                 {
                   icon: (
@@ -157,11 +154,11 @@ export default function ContactForm() {
                 <a
                   key={c.label}
                   href={c.href}
-                  className="flex items-start gap-4"
+                  className="flex items-start gap-3 sm:gap-4"
                   style={{ textDecoration: "none" }}
                 >
                   <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center flex-shrink-0"
                     style={{ background: "#F0F4FF", color: "#1E6FFF" }}
                   >
                     {c.icon}
@@ -198,8 +195,8 @@ export default function ContactForm() {
             {/* Call CTA */}
             <a
               href="tel:+919876543210"
-              className="btn-primary mt-10 w-full justify-center"
-              style={{ textDecoration: "none" }}
+              className="btn-primary mt-8 sm:mt-10 w-full justify-center"
+              style={{ textDecoration: "none", display: "flex" }}
             >
               <svg viewBox="0 0 20 20" className="w-4 h-4 fill-white">
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
@@ -211,25 +208,19 @@ export default function ContactForm() {
           {/* Form */}
           <div className="lg:col-span-3">
             <div
-              className="bg-white rounded-2xl p-8 shadow-xl"
+              className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl"
               style={{
                 border: "1.5px solid #C8D8FF",
                 boxShadow: "0 20px 60px rgba(30, 111, 255, 0.08)",
               }}
             >
               {state === "success" ? (
-                <div className="text-center py-12">
+                <div className="text-center py-10 sm:py-12">
                   <div
-                    className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
+                    className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-6"
                     style={{ background: "#dcfce7" }}
                   >
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="w-10 h-10"
-                      fill="none"
-                      stroke="#16a34a"
-                      strokeWidth="2"
-                    >
+                    <svg viewBox="0 0 24 24" className="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="#16a34a" strokeWidth="2">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </div>
@@ -237,7 +228,7 @@ export default function ContactForm() {
                     style={{
                       fontFamily: "Syne, sans-serif",
                       fontWeight: 800,
-                      fontSize: "24px",
+                      fontSize: "clamp(20px, 3vw, 24px)",
                       color: "#0A1628",
                       marginBottom: "12px",
                     }}
@@ -265,20 +256,20 @@ export default function ContactForm() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
                   <h3
                     style={{
                       fontFamily: "Syne, sans-serif",
                       fontWeight: 800,
-                      fontSize: "22px",
+                      fontSize: "clamp(18px, 3vw, 22px)",
                       color: "#0A1628",
-                      marginBottom: "24px",
+                      marginBottom: "20px",
                     }}
                   >
                     Request a Callback
                   </h3>
 
-                  <div className="grid sm:grid-cols-2 gap-5">
+                  <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
                     <div>
                       <label
                         style={{
@@ -327,7 +318,7 @@ export default function ContactForm() {
                     </div>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-5">
+                  <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
                     <div>
                       <label
                         style={{
@@ -414,14 +405,14 @@ export default function ContactForm() {
                         marginBottom: "6px",
                       }}
                     >
-                      Tell us about your project
+                      Tell us about your trip
                     </label>
                     <textarea
                       name="message"
                       value={form.message}
                       onChange={handleChange}
                       rows={4}
-                      placeholder="Briefly describe what you're looking to build or solve..."
+                      placeholder="Pickup location, destination, date, number of passengers..."
                       className="form-input"
                       style={{ resize: "vertical", minHeight: "110px" }}
                     />
@@ -441,7 +432,7 @@ export default function ContactForm() {
                     >
                       Preferred Response Method
                     </label>
-                    <div className="flex gap-4">
+                    <div className="flex flex-wrap gap-3 sm:gap-4">
                       {[
                         { value: "callback", label: "Phone Callback" },
                         { value: "email", label: "Email Response" },
@@ -513,8 +504,7 @@ export default function ContactForm() {
                       fontFamily: "Inter, sans-serif",
                     }}
                   >
-                    🔒 Your information is private and never shared with third
-                    parties.
+                    🔒 Your information is private and never shared with third parties.
                   </p>
                 </form>
               )}

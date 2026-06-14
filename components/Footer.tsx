@@ -5,20 +5,20 @@ export default function Footer() {
       style={{
         background: "#0A1628",
         color: "white",
-        paddingTop: "64px",
+        paddingTop: "48px",
         paddingBottom: "32px",
       }}
     >
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
-          {/* Brand */}
-          <div className="md:col-span-2">
-            <div className="flex items-center gap-3 mb-5">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 mb-10 sm:mb-12">
+          {/* Brand – full width on mobile */}
+          <div className="col-span-2">
+            <div className="flex items-center gap-3 mb-4 sm:mb-5">
               <div
-                className="w-9 h-9 rounded-xl flex items-center justify-center"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center flex-shrink-0"
                 style={{ background: "#1E6FFF" }}
               >
-                <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white">
+                <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5 fill-white">
                   <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-4 7c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v5H8v-5z" />
                 </svg>
               </div>
@@ -26,7 +26,7 @@ export default function Footer() {
                 style={{
                   fontFamily: "Syne, sans-serif",
                   fontWeight: 800,
-                  fontSize: "20px",
+                  fontSize: "clamp(16px, 3vw, 20px)",
                   color: "white",
                 }}
               >
@@ -36,27 +36,27 @@ export default function Footer() {
             <p
               style={{
                 color: "rgba(255,255,255,0.5)",
-                fontSize: "15px",
+                fontSize: "14px",
                 lineHeight: 1.8,
                 fontFamily: "Inter, sans-serif",
                 maxWidth: "300px",
-                marginBottom: "24px",
+                marginBottom: "20px",
               }}
             >
-              Smart technology solutions for forward-thinking businesses. We
-              build software that scales with your ambitions.
+              Reliable, professional transportation for every journey. We drive
+              so you can focus on what matters.
             </p>
             <div className="flex gap-3">
               {["in", "tw", "gh"].map((s) => (
                 <a
                   key={s}
                   href="#"
-                  className="w-9 h-9 rounded-lg flex items-center justify-center transition-colors"
+                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center transition-colors"
                   style={{
                     background: "rgba(255,255,255,0.08)",
                     color: "rgba(255,255,255,0.6)",
                     textDecoration: "none",
-                    fontSize: "12px",
+                    fontSize: "11px",
                     fontFamily: "Syne, sans-serif",
                     fontWeight: 700,
                     textTransform: "uppercase",
@@ -76,36 +76,36 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links */}
+          {/* Services links */}
           <div>
             <h4
               style={{
                 fontFamily: "Syne, sans-serif",
                 fontWeight: 700,
-                fontSize: "14px",
+                fontSize: "13px",
                 color: "white",
-                marginBottom: "16px",
+                marginBottom: "14px",
                 letterSpacing: "0.05em",
                 textTransform: "uppercase",
               }}
             >
               Services
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2 sm:space-y-3">
               {[
-                "Web Development",
-                "Mobile Apps",
-                "Cloud & DevOps",
-                "AI & Automation",
-                "Cybersecurity",
-                "UI/UX Design",
+                "Airport Transfers",
+                "Corporate Transportation",
+                "Long Distance Travel",
+                "Event Transportation",
+                "Executive Chauffeur",
+                "Hotel & Cruise Transfers",
               ].map((l) => (
                 <li key={l}>
                   <a
                     href="#services"
                     style={{
                       color: "rgba(255,255,255,0.5)",
-                      fontSize: "14px",
+                      fontSize: "13px",
                       fontFamily: "Inter, sans-serif",
                       textDecoration: "none",
                       transition: "color 0.2s",
@@ -114,8 +114,7 @@ export default function Footer() {
                       ((e.currentTarget as HTMLElement).style.color = "white")
                     }
                     onMouseLeave={(e) =>
-                      ((e.currentTarget as HTMLElement).style.color =
-                        "rgba(255,255,255,0.5)")
+                      ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.5)")
                     }
                   >
                     {l}
@@ -131,23 +130,17 @@ export default function Footer() {
               style={{
                 fontFamily: "Syne, sans-serif",
                 fontWeight: 700,
-                fontSize: "14px",
+                fontSize: "13px",
                 color: "white",
-                marginBottom: "16px",
+                marginBottom: "14px",
                 letterSpacing: "0.05em",
                 textTransform: "uppercase",
               }}
             >
               Contact
             </h4>
-            <ul className="space-y-3">
-              <li
-                style={{
-                  color: "rgba(255,255,255,0.5)",
-                  fontSize: "14px",
-                  fontFamily: "Inter, sans-serif",
-                }}
-              >
+            <ul className="space-y-2 sm:space-y-3">
+              <li style={{ color: "rgba(255,255,255,0.5)", fontSize: "13px", fontFamily: "Inter, sans-serif" }}>
                 +91 98765 43210
               </li>
               <li>
@@ -155,7 +148,7 @@ export default function Footer() {
                   href="mailto:hello@octopustech.in"
                   style={{
                     color: "rgba(255,255,255,0.5)",
-                    fontSize: "14px",
+                    fontSize: "13px",
                     fontFamily: "Inter, sans-serif",
                     textDecoration: "none",
                   }}
@@ -166,22 +159,14 @@ export default function Footer() {
               <li
                 style={{
                   color: "rgba(255,255,255,0.5)",
-                  fontSize: "14px",
+                  fontSize: "13px",
                   fontFamily: "Inter, sans-serif",
                   lineHeight: 1.6,
                 }}
               >
-                Baner, Pune,
-                <br />
-                Maharashtra 411045
+                Baner, Pune,<br />Maharashtra 411045
               </li>
-              <li
-                style={{
-                  color: "rgba(255,255,255,0.5)",
-                  fontSize: "13px",
-                  fontFamily: "Inter, sans-serif",
-                }}
-              >
+              <li style={{ color: "rgba(255,255,255,0.5)", fontSize: "13px", fontFamily: "Inter, sans-serif" }}>
                 Mon–Sat · 9am–7pm IST
               </li>
             </ul>
@@ -190,7 +175,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div
-          className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8"
+          className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 sm:pt-8"
           style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
         >
           <p
@@ -198,11 +183,12 @@ export default function Footer() {
               color: "rgba(255,255,255,0.35)",
               fontSize: "13px",
               fontFamily: "Inter, sans-serif",
+              textAlign: "center",
             }}
           >
             © {new Date().getFullYear()} Octopus Tech. All rights reserved.
           </p>
-          <div className="flex gap-6">
+          <div className="flex gap-4 sm:gap-6">
             {["Privacy Policy", "Terms of Service"].map((l) => (
               <a
                 key={l}
@@ -218,8 +204,7 @@ export default function Footer() {
                   ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.7)")
                 }
                 onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLElement).style.color =
-                    "rgba(255,255,255,0.35)")
+                  ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.35)")
                 }
               >
                 {l}
