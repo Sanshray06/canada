@@ -1,0 +1,18 @@
+# dependencies
+/node_modules
+
+# production
+/.next/
+/out/
+
+# data (leads) — back this up separately
+/data/leads.json
+
+# env
+.env.local
+.env
+
+# misc
+.DS_Store
+*.pem
+npm-debug.log*
