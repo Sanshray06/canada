@@ -17,7 +17,7 @@ export default function ContactForm() {
   const [errorMsg, setErrorMsg] = useState("");
 
   const services = [
-    "Web Development",
+    "Trasnportation",
     "Mobile Apps",
     "Cloud & DevOps",
     "AI & Automation",
