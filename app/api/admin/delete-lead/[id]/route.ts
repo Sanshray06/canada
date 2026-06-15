@@ -5,7 +5,7 @@ import { supabase } from "@/lib/supabase";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 const LEADS_FILE = path.join(DATA_DIR, "leads.json");
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "octopus2024";
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 function readLeads() {
   if (!fs.existsSync(LEADS_FILE)) return [];
