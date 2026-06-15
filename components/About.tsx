@@ -2,23 +2,23 @@ export default function About() {
   const whyUs = [
     {
       num: "01",
-      title: "24/7 Availability",
-      desc: "Our transportation services operate around the clock, ensuring you always have a reliable ride whenever you need it.",
+      title: "Dedicated Support",
+      desc: "We operate as an extension of your company, representing your business professionally in every interaction with drivers, brokers, and customers.",
     },
     {
       num: "02",
-      title: "Professional Chauffeurs",
-      desc: "All our drivers are experienced, licensed, and committed to providing a safe, comfortable, and professional travel experience.",
+      title: "Proactive Communication",
+      desc: "We stay in regular contact with drivers, brokers, and customers to keep shipments moving and address issues before they become larger problems.",
     },
     {
       num: "03",
-      title: "On-Time Pickups",
-      desc: "We value your time. Whether it's an airport transfer or corporate trip, punctuality is our top priority.",
+      title: "Accuracy & Organization",
+      desc: "We maintain detailed records, update systems promptly, and ensure all operational information is current and easy to access.",
     },
     {
       num: "04",
-      title: "Clean & Comfortable Vehicles",
-      desc: "Our fleet is regularly maintained and cleaned to ensure a premium travel experience for every passenger.",
+      title: "Scalable to Your Business",
+      desc: "Whether you run a small fleet or a large operation, we can expand our team of dispatchers and support staff to match your requirements.",
     },
   ];
 
@@ -59,7 +59,7 @@ export default function About() {
                     }}
                   >
                     <span style={{ color: "#4D91FF", fontSize: "11px", fontFamily: "Syne, sans-serif", fontWeight: 600 }}>
-                      PREMIUM TRANSPORTATION SERVICE
+                      DISPATCH SUPPORT - NORTH AMERICA
                     </span>
                   </div>
                   <h3
@@ -72,10 +72,10 @@ export default function About() {
                       marginBottom: "14px",
                     }}
                   >
-                    Reliable Transportation You Can Count On
+                    Back-Office Support You Can Count On
                   </h3>
                   <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "clamp(13px, 2vw, 15px)", lineHeight: 1.7, fontFamily: "Inter, sans-serif" }}>
-                    Providing dependable airport transfers, corporate transportation, and long-distance travel solutions. Our mission is simple: deliver safe, comfortable, and punctual transportation for every customer.
+                    Founded in 2022, our team was built with one goal: providing reliable, professional, and responsive dispatch and back-office solutions for trucking companies across North America.
                   </p>
                 </div>
 
@@ -85,9 +85,9 @@ export default function About() {
                   style={{ borderTop: "1px solid rgba(255,255,255,0.1)", marginTop: "24px" }}
                 >
                   {[
-                    { n: "5000+", l: "Trips Completed" },
-                    { n: "1000+", l: "Happy Clients" },
-                    { n: "15+", l: "Years Experience" },
+                    { n: "4+", l: "Core Dispatchers" },
+                    { n: "2022", l: "Founded" },
+                    { n: "24/7", l: "Coverage" },
                   ].map((s) => (
                     <div key={s.l} className="text-center">
                       <div style={{ fontFamily: "Syne, sans-serif", fontWeight: 800, fontSize: "clamp(20px, 4vw, 28px)", color: "#1E6FFF" }}>
@@ -101,7 +101,7 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Floating badge – repositioned on mobile */}
+              {/* Floating badge */}
               <div
                 className="absolute -bottom-4 right-2 sm:-right-4 bg-white rounded-2xl shadow-xl p-3 sm:p-4 flex items-center gap-2 sm:gap-3"
                 style={{ border: "1px solid #C8D8FF", maxWidth: "calc(100% - 16px)" }}
@@ -116,10 +116,10 @@ export default function About() {
                 </div>
                 <div>
                   <div style={{ fontFamily: "Syne, sans-serif", fontWeight: 700, fontSize: "clamp(12px, 2.5vw, 14px)", color: "#0A1628" }}>
-                    Trusted Transportation Service
+                    Trusted Dispatch Partner
                   </div>
                   <div style={{ color: "#6B7A99", fontSize: "12px", fontFamily: "Inter, sans-serif" }}>
-                    Licensed & Insured
+                    Calgary, AB · Canada
                   </div>
                 </div>
               </div>
@@ -150,7 +150,7 @@ export default function About() {
                   marginBottom: "18px",
                 }}
               >
-                Your Trusted Transportation Partner
+                Your Trusted Trucking Dispatch Partner
               </h2>
               <p
                 style={{
@@ -161,7 +161,7 @@ export default function About() {
                   marginBottom: "14px",
                 }}
               >
-                Whether you&apos;re travelling for business, catching a flight, attending an event, or simply need dependable transportation, our experienced chauffeurs and modern fleet are ready to serve you.
+                We currently have a core team of four experienced dispatchers, supported by administrative staff who assist with documentation, tracking, customer communication, and operational tasks. This structure allows us to provide consistent coverage and respond quickly to time-sensitive situations.
               </p>
               <p
                 style={{
@@ -172,7 +172,7 @@ export default function About() {
                   marginBottom: "28px",
                 }}
               >
-                We&apos;re committed to making every ride comfortable, timely, and stress-free — because your journey matters to us from start to finish.
+                Our team is trained to work with carriers, brokers, drivers, and customers in a fast-paced environment - maintaining clear communication and attention to detail so your fleet keeps moving.
               </p>
 
               <a href="#contact" className="btn-primary" style={{ textDecoration: "none", display: "inline-flex" }}>
@@ -197,7 +197,7 @@ export default function About() {
                 textTransform: "uppercase",
               }}
             >
-              Why Ride With Us
+              Why Work With Us
             </span>
             <h2
               style={{
@@ -208,7 +208,7 @@ export default function About() {
                 marginTop: "12px",
               }}
             >
-              What Makes Us Different
+              How We Work
             </h2>
           </div>
 

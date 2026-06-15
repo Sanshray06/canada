@@ -90,7 +90,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Floating decorative shapes – hidden on small screens to reduce clutter */}
+      {/* Floating decorative shapes */}
       <div
         className="absolute hidden sm:block float-shape"
         style={{ top: "20%", right: "8%", opacity: 0.12 }}
@@ -128,7 +128,7 @@ export default function Hero() {
                 textTransform: "uppercase",
               }}
             >
-              Premium Transportation Services
+              Trucking Dispatch & Back-Office Support
             </span>
           </div>
 
@@ -143,7 +143,7 @@ export default function Hero() {
               marginBottom: "20px",
             }}
           >
-            Reliable Airport &{" "}
+            Reliable Dispatch Support for{" "}
             <span
               style={{
                 background: "linear-gradient(90deg, #1E6FFF, #4D91FF)",
@@ -152,9 +152,9 @@ export default function Hero() {
                 backgroundClip: "text",
               }}
             >
-              Executive Transportation
+              Trucking Companies
             </span>{" "}
-            Across Ontario
+            Across North America
           </h1>
 
           <p
@@ -168,9 +168,9 @@ export default function Hero() {
               fontWeight: 400,
             }}
           >
-            Professional airport transfers, corporate transportation, long-distance travel,
-            and chauffeur services available 24/7. Travel comfortably, safely, and on time
-            with our experienced drivers and premium fleet.
+            Professional dispatch coordination, back-office administration, and cross-border
+            support - available when your fleet needs it most. We operate as an extension of
+            your company so you can focus on growing your business.
           </p>
 
           {/* CTAs */}
@@ -181,7 +181,7 @@ export default function Hero() {
               </svg>
               Request a Callback
             </a>
-            <a href="tel:+911234567890" className="btn-outline" style={{ justifyContent: "center" }}>
+            <a href="tel:+12049529246" className="btn-outline" style={{ justifyContent: "center" }}>
               <svg viewBox="0 0 20 20" className="w-4 h-4" fill="currentColor">
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
               </svg>
@@ -195,10 +195,10 @@ export default function Hero() {
             style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
           >
             {[
-              { n: "5000+", l: "Trips Completed" },
-              { n: "98%", l: "Client Satisfaction" },
-              { n: "15+", l: "Years Experience" },
-              { n: "24/7", l: "Support" },
+              { n: "4+", l: "Expert Dispatchers" },
+              { n: "2022", l: "Founded" },
+              { n: "24/7", l: "Operational Support" },
+              { n: "100%", l: "Dedicated to Your Fleet" },
             ].map((s) => (
               <div key={s.l} className="flex items-center gap-2 sm:gap-3">
                 <span

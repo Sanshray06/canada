@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "../globals.css";
 
 export const metadata: Metadata = {
-  title: "Admin Panel — Octopus Tech",
+  title: "Admin Panel - CargoSync",
   robots: "noindex, nofollow",
 };
 

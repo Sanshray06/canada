@@ -5,7 +5,7 @@
 /.next/
 /out/
 
-# data (leads) — back this up separately
+# data (leads) - back this up separately
 /data/leads.json
 
 # env

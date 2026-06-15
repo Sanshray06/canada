@@ -1,4 +1,4 @@
-# 🐙 Octopus Tech — Full Website + Admin Panel
+# 🐙 CargoSync - Full Website + Admin Panel
 
 A clean, professional Next.js website with a contact form that saves leads to a JSON file, plus a full admin panel to manage them.
 
@@ -73,7 +73,7 @@ octopus-tech/
 
 ### Company Info
 Search & replace these across the project:
-- `Octopus Tech` → Your company name
+- `CargoSync` → Your company name
 - `+91 98765 43210` → Your phone number
 - `hello@octopustech.in` → Your email
 - `Baner, Pune, Maharashtra 411045` → Your address
@@ -136,7 +136,7 @@ vercel deploy
 
 Set `ADMIN_PASSWORD` as an environment variable in your Vercel project settings.
 
-> ⚠️ **Note for Vercel:** Vercel's serverless functions use ephemeral file systems — the JSON file won't persist between deployments. For production, consider using a simple database like PlanetScale, Supabase, or Airtable. For a small team using the same server, this file-based approach works perfectly.
+> ⚠️ **Note for Vercel:** Vercel's serverless functions use ephemeral file systems - the JSON file won't persist between deployments. For production, consider using a simple database like PlanetScale, Supabase, or Airtable. For a small team using the same server, this file-based approach works perfectly.
 
 ---
 
@@ -150,4 +150,4 @@ Set `ADMIN_PASSWORD` as an environment variable in your Vercel project settings.
 
 ---
 
-Built with ❤️ by OctopusTech Team
+Built with ❤️ by CargoSync Team

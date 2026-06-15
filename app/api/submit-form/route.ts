@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 import { supabase } from "@/lib/supabase";
-// Data file path — stored in project root /data folder
+// Data file path - stored in project root /data folder
 // const DATA_DIR = path.join(process.cwd(), "data");
 // const LEADS_FILE = path.join(DATA_DIR, "leads.json");
 

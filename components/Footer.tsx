@@ -30,7 +30,7 @@ export default function Footer() {
                   color: "white",
                 }}
               >
-                Octopus<span style={{ color: "#1E6FFF" }}>Tech</span>
+                CargoSync<span style={{ color: "#1E6FFF" }}>Tech</span>
               </span>
             </div>
             <p
@@ -46,7 +46,7 @@ export default function Footer() {
               Reliable, professional transportation for every journey. We drive
               so you can focus on what matters.
             </p>
-            <div className="flex gap-3">
+            {/* <div className="flex gap-3">
               {["in", "tw", "gh"].map((s) => (
                 <a
                   key={s}
@@ -73,7 +73,7 @@ export default function Footer() {
                   {s}
                 </a>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Services links */}
@@ -93,12 +93,12 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 sm:space-y-3">
               {[
-                "Airport Transfers",
-                "Corporate Transportation",
-                "Long Distance Travel",
-                "Event Transportation",
-                "Executive Chauffeur",
-                "Hotel & Cruise Transfers",
+                "Freight Dispatch",
+                "Back-Office Administration",
+                "Cross-Border Coordination",
+                "Driver & Customer Communication",
+                "Fleet Tracking & Monitoring",
+                "Scalable Dispatch Teams"
               ].map((l) => (
                 <li key={l}>
                   <a
@@ -140,9 +140,26 @@ export default function Footer() {
               Contact
             </h4>
             <ul className="space-y-2 sm:space-y-3">
-              <li style={{ color: "rgba(255,255,255,0.5)", fontSize: "13px", fontFamily: "Inter, sans-serif" }}>
-                +91 98765 43210
-              </li>
+              <li
+  style={{
+    color: "rgba(255,255,255,0.5)",
+    fontSize: "13px",
+    fontFamily: "Inter, sans-serif",
+    marginBottom: "10px",
+  }}
+>
+  +91 7428975521
+</li>
+
+<li
+  style={{
+    color: "rgba(255,255,255,0.5)",
+    fontSize: "13px",
+    fontFamily: "Inter, sans-serif",
+  }}
+>
+  +1 (204) 952-9246
+</li>
               <li>
                 <a
                   href="mailto:hello@octopustech.in"
@@ -164,11 +181,11 @@ export default function Footer() {
                   lineHeight: 1.6,
                 }}
               >
-                Baner, Pune,<br />Maharashtra 411045
+                Calgary, AB, Canada
               </li>
-              <li style={{ color: "rgba(255,255,255,0.5)", fontSize: "13px", fontFamily: "Inter, sans-serif" }}>
+              {/* <li style={{ color: "rgba(255,255,255,0.5)", fontSize: "13px", fontFamily: "Inter, sans-serif" }}>
                 Mon–Sat · 9am–7pm IST
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
@@ -186,7 +203,7 @@ export default function Footer() {
               textAlign: "center",
             }}
           >
-            © {new Date().getFullYear()} Octopus Tech. All rights reserved.
+            © {new Date().getFullYear()} CargoSync. All rights reserved.
           </p>
           <div className="flex gap-4 sm:gap-6">
             {["Privacy Policy", "Terms of Service"].map((l) => (

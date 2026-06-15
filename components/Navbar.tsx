@@ -34,13 +34,13 @@ export default function Navbar() {
             style={{ background: scrolled ? "#1E6FFF" : "rgba(255,255,255,0.2)", border: scrolled ? "none" : "1px solid rgba(255,255,255,0.3)" }}
           >
             <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5 fill-white">
-              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-4 7c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v5H8v-5z" />
+              <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
             </svg>
           </div>
           <span
             style={{ fontFamily: "Syne, sans-serif", fontWeight: 800, fontSize: "clamp(16px, 4vw, 20px)", color: scrolled ? "#0A1628" : "white" }}
           >
-            Octopus<span style={{ color: "#1E6FFF" }}>Tech</span>
+            Cargo<span style={{ color: "#1E6FFF" }}>Sync</span>
           </span>
         </a>
 

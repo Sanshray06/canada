@@ -203,7 +203,7 @@ export default function AdminPage() {
                 Admin Panel
               </h1>
               <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "14px" }}>
-                OctopusTech · Leads Management
+                CargoSync · Leads Management
               </p>
             </div>
 
@@ -275,7 +275,7 @@ export default function AdminPage() {
                 className="text-center mt-5"
                 style={{ color: "#6B7A99", fontSize: "12px" }}
               >
-                Default password:{" "}
+                {/* Default password:{" "}
                 <code
                   style={{
                     background: "#F0F4FF",
@@ -286,7 +286,7 @@ export default function AdminPage() {
                   }}
                 >
                   octopus2024
-                </code>
+                </code> */}
                 <br />
                 <span style={{ fontSize: "11px" }}>
                   Set <code>ADMIN_PASSWORD</code> env var to change
@@ -310,8 +310,8 @@ export default function AdminPage() {
         className="sticky top-0 z-50 shadow-sm"
         style={{ background: "#0A1628" }}
       >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row gap-4 sm:gap-0 items-start sm:items-center justify-between">
+          <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
             <div
               className="w-8 h-8 rounded-lg flex items-center justify-center"
               style={{ background: "#1E6FFF" }}
@@ -328,7 +328,7 @@ export default function AdminPage() {
                 color: "white",
               }}
             >
-              Octopus<span style={{ color: "#1E6FFF" }}>Tech</span>{" "}
+              Cargo<span style={{ color: "#1E6FFF" }}>Sync</span>{" "}
               <span style={{ color: "rgba(255,255,255,0.4)", fontWeight: 400 }}>
                 Admin
               </span>
@@ -387,9 +387,9 @@ export default function AdminPage() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {/* Stats row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {[
             { label: "Total Leads", value: counts.all, color: "#1E6FFF", bg: "#EFF6FF" },
             { label: "New", value: counts.new, color: "#d97706", bg: "#fffbeb" },
@@ -398,14 +398,14 @@ export default function AdminPage() {
           ].map((s) => (
             <div
               key={s.label}
-              className="bg-white rounded-2xl p-5"
+              className="bg-white rounded-2xl p-4 sm:p-5"
               style={{ border: "1.5px solid #C8D8FF" }}
             >
               <div
                 style={{
                   fontFamily: "Syne, sans-serif",
                   fontWeight: 800,
-                  fontSize: "36px",
+                  fontSize: window.innerWidth < 640 ? "28px" : "36px",
                   color: s.color,
                   lineHeight: 1,
                   marginBottom: "6px",
@@ -428,14 +428,14 @@ export default function AdminPage() {
         </div>
 
         {/* Filters + Search */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-6">
-          <div className="flex gap-2 flex-wrap">
+        <div className="flex flex-col lg:flex-row gap-4 mb-6">
+          <div className="flex flex-wrap gap-2 w-full lg:w-auto">
             {(["all", "new", "read", "contacted"] as Tab[]).map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 style={{
-                  padding: "8px 16px",
+                  padding: "8px 12px",
                   borderRadius: "99px",
                   border: "1.5px solid",
                   borderColor: activeTab === tab ? "#1E6FFF" : "#C8D8FF",
@@ -520,8 +520,8 @@ export default function AdminPage() {
               </p>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="admin-table w-full">
+            <div className="overflow-x-auto w-full">
+              <table className="admin-table min-w-[900px] w-full">
                 <thead>
                   <tr>
                     <th>Name / Company</th>
@@ -573,7 +573,7 @@ export default function AdminPage() {
                         </td>
                         <td>
                           <span style={{ fontSize: "13px", color: "#0A1628" }}>
-                            {lead.service || "—"}
+                            {lead.service || "-"}
                           </span>
                         </td>
                         <td>
@@ -635,7 +635,7 @@ export default function AdminPage() {
                           </select>
                         </td>
                         <td onClick={(e) => e.stopPropagation()}>
-                          <div className="flex items-center gap-2">
+                          <div className="flex flex-wrap items-center gap-2">
                             <button
                               onClick={() => setExpandedId(expandedId === lead.id ? null : lead.id)}
                               style={{
@@ -686,10 +686,10 @@ export default function AdminPage() {
                                 background: "#F8FAFF",
                                 borderTop: "1px solid #C8D8FF",
                                 borderBottom: "1px solid #C8D8FF",
-                                padding: "20px 24px",
+                                padding: window.innerWidth < 640 ? "16px" : "20px 24px"
                               }}
                             >
-                              <div className="grid md:grid-cols-3 gap-6">
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                 <div>
                                   <div
                                     style={{
@@ -770,9 +770,9 @@ export default function AdminPage() {
                                   >
                                     {lead.message || "No message provided."}
                                   </div>
-                                  <div className="flex gap-3 mt-4">
+                                  <div className="flex flex-col sm:flex-row gap-3 mt-4">
                                     <a
-                                      href={`mailto:${lead.email}?subject=Re: Your Enquiry — Octopus Tech&body=Hi ${lead.name},%0A%0AThank you for reaching out to Octopus Tech.`}
+                                      href={`mailto:${lead.email}?subject=Re: Your Enquiry - CargoSync&body=Hi ${lead.name},%0A%0AThank you for reaching out to CargoSync.`}
                                       className="btn-primary"
                                       style={{
                                         textDecoration: "none",

@@ -16,14 +16,13 @@ export default function ContactForm() {
   const [state, setState] = useState<FormState>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
-  // ✅ All transport-only services
   const services = [
-    "Airport Transfer",
-    "Corporate Transportation",
-    "Long Distance Travel",
-    "Event Transportation",
-    "Executive Chauffeur Service",
-    "Hotel & Cruise Transfer",
+    "Freight Dispatch",
+    "Back-Office Administration",
+    "Cross-Border Coordination",
+    "Driver & Customer Communication",
+    "Fleet Tracking & Monitoring",
+    "Scalable Dispatch Teams",
     "Other / Not Sure",
   ];
 
@@ -100,7 +99,7 @@ export default function ContactForm() {
                 marginBottom: "18px",
               }}
             >
-              Let&apos;s Talk About Your Trip
+              Let&apos;s Talk About Your Fleet
             </h2>
             <p
               style={{
@@ -111,9 +110,7 @@ export default function ContactForm() {
                 marginBottom: "32px",
               }}
             >
-              Fill in the form and we&apos;ll get back to you within 1 hour during
-              business hours (Mon–Sat, 9am–7pm IST). Prefer to call? Reach us
-              directly on the number below.
+              Fill in the form and we&apos;ll get back to you within 1 business hour. Prefer to call? Reach us directly on either number below.
             </p>
 
             {/* Contact details */}
@@ -125,9 +122,19 @@ export default function ContactForm() {
                       <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                     </svg>
                   ),
-                  label: "Phone",
-                  value: "+91 98765 43210",
-                  href: "tel:+919876543210",
+                  label: "Canada",
+                  value: "+1 (204) 952-9246",
+                  href: "tel:+12049529246",
+                },
+                {
+                  icon: (
+                    <svg viewBox="0 0 20 20" className="w-5 h-5 fill-current">
+                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                    </svg>
+                  ),
+                  label: "India",
+                  value: "+91 7428975521",
+                  href: "tel:+917428975521",
                 },
                 {
                   icon: (
@@ -137,8 +144,8 @@ export default function ContactForm() {
                     </svg>
                   ),
                   label: "Email",
-                  value: "hello@octopustech.in",
-                  href: "mailto:hello@octopustech.in",
+                  value: "hello@cargosync.ca",
+                  href: "mailto:hello@cargosync.ca",
                 },
                 {
                   icon: (
@@ -147,7 +154,7 @@ export default function ContactForm() {
                     </svg>
                   ),
                   label: "Office",
-                  value: "Baner, Pune, Maharashtra 411045",
+                  value: "1307-235 Red Embers Way NE, Calgary AB T3N 1E9, Canada",
                   href: "#",
                 },
               ].map((c) => (
@@ -194,7 +201,7 @@ export default function ContactForm() {
 
             {/* Call CTA */}
             <a
-              href="tel:+919876543210"
+              href="tel:+12049529246"
               className="btn-primary mt-8 sm:mt-10 w-full justify-center"
               style={{ textDecoration: "none", display: "flex" }}
             >
@@ -244,8 +251,7 @@ export default function ContactForm() {
                       marginBottom: "24px",
                     }}
                   >
-                    Our team will reach out within 1 hour during business hours.
-                    Check your inbox for a confirmation email.
+                    Our team will reach out within 1 business hour. Check your inbox for a confirmation email.
                   </p>
                   <button
                     onClick={() => setState("idle")}
@@ -288,7 +294,7 @@ export default function ContactForm() {
                         name="name"
                         value={form.name}
                         onChange={handleChange}
-                        placeholder="Rahul Sharma"
+                        placeholder="John Smith"
                         required
                         className="form-input"
                       />
@@ -311,7 +317,7 @@ export default function ContactForm() {
                         name="phone"
                         value={form.phone}
                         onChange={handleChange}
-                        placeholder="+91 98765 43210"
+                        placeholder="+1 (204) 952-9246"
                         required
                         className="form-input"
                       />
@@ -337,7 +343,7 @@ export default function ContactForm() {
                         name="email"
                         value={form.email}
                         onChange={handleChange}
-                        placeholder="rahul@company.com"
+                        placeholder="john@yourcompany.com"
                         required
                         className="form-input"
                       />
@@ -360,7 +366,7 @@ export default function ContactForm() {
                         name="company"
                         value={form.company}
                         onChange={handleChange}
-                        placeholder="Your Company Ltd."
+                        placeholder="Your Trucking Company"
                         className="form-input"
                       />
                     </div>
@@ -405,14 +411,14 @@ export default function ContactForm() {
                         marginBottom: "6px",
                       }}
                     >
-                      Tell us about your trip
+                      Tell us about your operation
                     </label>
                     <textarea
                       name="message"
                       value={form.message}
                       onChange={handleChange}
                       rows={4}
-                      placeholder="Pickup location, destination, date, number of passengers..."
+                      placeholder="Fleet size, lanes you run, current challenges, what kind of support you need..."
                       className="form-input"
                       style={{ resize: "vertical", minHeight: "110px" }}
                     />
@@ -491,7 +497,7 @@ export default function ContactForm() {
                         <svg viewBox="0 0 20 20" className="w-4 h-4 fill-white">
                           <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
                         </svg>
-                        Send Request — We&apos;ll Call You Back
+                        Send Request - We&apos;ll Call You Back
                       </>
                     )}
                   </button>
