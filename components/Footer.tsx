@@ -160,7 +160,7 @@ export default function Footer() {
 >
   +1 (204) 952-9246
 </li>
-              {/* <li>
+              <li>
                 <a
                   href="mailto:hello@octopustech.in"
                   style={{
@@ -170,9 +170,9 @@ export default function Footer() {
                     textDecoration: "none",
                   }}
                 >
-                  hello@octopustech.in
+                  hello@cargosync.ca
                 </a>
-              </li> */}
+              </li>
               <li
                 style={{
                   color: "rgba(255,255,255,0.5)",
@@ -206,10 +206,11 @@ export default function Footer() {
             © {new Date().getFullYear()} CargoSync. All rights reserved.
           </p>
           <div className="flex gap-4 sm:gap-6">
-            {["Privacy Policy", "Terms of Service"].map((l) => (
-              <a
-                key={l}
-                href="#"
+            {[
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms of Service", href: "/terms-of-service" },
+].map((l) => (
+              <a key={l.label} href={l.href}
                 style={{
                   color: "rgba(255,255,255,0.35)",
                   fontSize: "13px",
@@ -224,7 +225,7 @@ export default function Footer() {
                   ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.35)")
                 }
               >
-                {l}
+                {l.label}
               </a>
             ))}
           </div>
