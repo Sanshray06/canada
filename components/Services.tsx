@@ -89,18 +89,20 @@ export default function Services() {
             What We Do
           </span>
           <h2
-            style={{
-              fontFamily: "Syne, sans-serif",
-              fontWeight: 800,
-              fontSize: "clamp(26px, 4vw, 48px)",
-              color: "#0A1628",
-              marginTop: "12px",
-              lineHeight: 1.15,
-            }}
-          >
-            Services Built for{" "}
-            <span style={{ color: "#1E6FFF" }}>Trucking Operations</span>
-          </h2>
+  style={{
+    fontFamily: "'Barlow Condensed', sans-serif",
+    fontWeight: 700,
+    fontSize: "clamp(30px, 4.5vw, 54px)",
+    color: "#0A1628",
+    marginTop: "12px",
+    lineHeight: 1.1,
+    letterSpacing: "-0.01em",
+    textTransform: "uppercase",
+  }}
+>
+  Services Built for{" "}
+  <span style={{ color: "#1E6FFF" }}>Trucking Operations</span>
+</h2>
           <p
             style={{
               color: "#6B7A99",

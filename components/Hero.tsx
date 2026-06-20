@@ -134,13 +134,23 @@ export default function Hero() {
 
           {/* Headline */}
           <h1
+            // style={{
+            //   fontFamily: "Syne, sans-serif",
+            //   fontWeight: 800,
+            //   fontSize: "clamp(32px, 6vw, 72px)",
+            //   color: "white",
+            //   lineHeight: 1.15,
+            //   marginBottom: "20px",
+            // }}
             style={{
-              fontFamily: "Syne, sans-serif",
+              fontFamily: "'Barlow Condensed', sans-serif",
               fontWeight: 800,
               fontSize: "clamp(32px, 6vw, 72px)",
-              color: "white",
-              lineHeight: 1.08,
-              marginBottom: "20px",
+              color: "#e9ebed",
+              marginTop: "12px",
+              lineHeight: 1.15,
+              letterSpacing: "-0.01em",
+              textTransform: "uppercase",
             }}
           >
             Reliable Dispatch Support for{" "}

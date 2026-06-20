@@ -64,13 +64,16 @@ export default function About() {
                   </div>
                   <h3
                     style={{
-                      fontFamily: "Syne, sans-serif",
-                      fontWeight: 800,
-                      fontSize: "clamp(20px, 3.5vw, 28px)",
-                      color: "white",
-                      lineHeight: 1.2,
-                      marginBottom: "14px",
-                    }}
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontWeight: 800,
+                  fontSize: "clamp(26px, 3.5vw, 42px)",
+                  color: "#d9e1e9",
+                  marginTop: "12px",
+                  lineHeight: 1.15,
+                  letterSpacing: "-0.01em",
+                  textTransform: "uppercase",
+                  marginBottom: "14px"
+                }}
                   >
                     Back-Office Support You Can Count On
                   </h3>
@@ -141,13 +144,15 @@ export default function About() {
               </span>
               <h2
                 style={{
-                  fontFamily: "Syne, sans-serif",
+                  fontFamily: "'Barlow Condensed', sans-serif",
                   fontWeight: 800,
                   fontSize: "clamp(26px, 3.5vw, 42px)",
-                  color: "#0A1628",
+                  color: "#051423",
                   marginTop: "12px",
                   lineHeight: 1.15,
-                  marginBottom: "18px",
+                  letterSpacing: "-0.01em",
+                  textTransform: "uppercase",
+                  marginBottom: "18px"
                 }}
               >
                 Your Trusted Trucking Dispatch Partner
@@ -201,12 +206,15 @@ export default function About() {
             </span>
             <h2
               style={{
-                fontFamily: "Syne, sans-serif",
-                fontWeight: 800,
-                fontSize: "clamp(26px, 3.5vw, 42px)",
-                color: "#0A1628",
-                marginTop: "12px",
-              }}
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontWeight: 800,
+                  fontSize: "clamp(26px, 3.5vw, 42px)",
+                  color: "#051423",
+                  marginTop: "12px",
+                  lineHeight: 1.15,
+                  letterSpacing: "-0.01em",
+                  textTransform: "uppercase",
+                }}
             >
               How We Work
             </h2>

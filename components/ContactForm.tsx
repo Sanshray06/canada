@@ -89,15 +89,25 @@ export default function ContactForm() {
               Get In Touch
             </span>
             <h2
+              // style={{
+              //   fontFamily: "Syne, sans-serif",
+              //   fontWeight: 800,
+                
+              //   color: "#0A1628",
+              //   marginTop: "12px",
+              //   lineHeight: 1.15,
+              //   marginBottom: "18px",
+              // }}
               style={{
-                fontFamily: "Syne, sans-serif",
-                fontWeight: 800,
-                fontSize: "clamp(26px, 3.5vw, 42px)",
-                color: "#0A1628",
-                marginTop: "12px",
-                lineHeight: 1.15,
-                marginBottom: "18px",
-              }}
+              fontFamily: "'Barlow Condensed', sans-serif",
+              fontWeight: 800,
+              fontSize: "clamp(26px, 3.5vw, 42px)",
+              color: "#051423",
+              marginTop: "12px",
+              lineHeight: 1.15,
+              letterSpacing: "-0.01em",
+              textTransform: "uppercase",
+            }}
             >
               Let&apos;s Talk About Your Fleet
             </h2>
@@ -264,13 +274,23 @@ export default function ContactForm() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
                   <h3
+                    // style={{
+                    //   fontFamily: "Syne, sans-serif",
+                    //   fontWeight: 800,
+                    //   fontSize: "clamp(18px, 3vw, 22px)",
+                    //   color: "#0A1628",
+                    //   marginBottom: "20px",
+                    // }}
                     style={{
-                      fontFamily: "Syne, sans-serif",
-                      fontWeight: 800,
-                      fontSize: "clamp(18px, 3vw, 22px)",
-                      color: "#0A1628",
-                      marginBottom: "20px",
-                    }}
+              fontFamily: "'Barlow Condensed', sans-serif",
+              fontWeight: 800,
+              fontSize: "clamp(26px, 3.5vw, 42px)",
+              color: "#051423",
+              marginTop: "12px",
+              lineHeight: 1.15,
+              letterSpacing: "-0.01em",
+              textTransform: "uppercase",
+            }}
                   >
                     Request a Callback
                   </h3>

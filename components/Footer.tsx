@@ -160,7 +160,7 @@ export default function Footer() {
 >
   +1 (204) 952-9246
 </li>
-              <li>
+              {/* <li>
                 <a
                   href="mailto:hello@octopustech.in"
                   style={{
@@ -172,7 +172,7 @@ export default function Footer() {
                 >
                   hello@octopustech.in
                 </a>
-              </li>
+              </li> */}
               <li
                 style={{
                   color: "rgba(255,255,255,0.5)",
