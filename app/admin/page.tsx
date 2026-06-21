@@ -333,6 +333,19 @@ export default function AdminPage() {
                 Admin
               </span>
             </span>
+            <a
+              href="/admin/quotes"
+              style={{
+                fontSize: "13px",
+                color: "rgba(255,255,255,0.6)",
+                fontFamily: "Inter, sans-serif",
+                textDecoration: "none",
+                borderLeft: "1px solid rgba(255,255,255,0.15)",
+                paddingLeft: "12px",
+              }}
+            >
+              Quote Requests →
+            </a>
           </div>
           <div className="flex items-center gap-3">
             <button
