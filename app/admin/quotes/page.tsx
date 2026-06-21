@@ -52,7 +52,9 @@ export default function AdminQuotesPage() {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch("/api/admin/quotes", { headers: { "x-admin-token": t } });
+      const res = await fetch("/api/admin/quotes", { 
+        headers: { "x-admin-token": t },
+        cache: "no-store"});
       if (res.status === 401) {
         setToken("");
         setLoginError("Session expired. Please log in again.");
@@ -123,6 +125,15 @@ export default function AdminQuotesPage() {
               Quote Requests
             </h1>
             <span style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B7A99" }}>{quotes.length} total</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <span style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B7A99" }}>{quotes.length} total</span>
+            <button
+              onClick={() => fetchQuotes(token)}
+              style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#1E6FFF", background: "none", border: "1px solid #1E6FFF", borderRadius: "8px", padding: "4px 10px", cursor: "pointer" }}
+            >
+              Refresh
+            </button>
           </div>
 
           {loading && <p style={{ fontFamily: "Inter, sans-serif", color: "#6B7A99" }}>Loading quotes...</p>}

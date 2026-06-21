@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { services } from "@/lib/service-data";
 import { calculateQuote, pricingServices, termOptions } from "@/lib/quote-pricing";
 
@@ -17,8 +17,15 @@ export default function QuoteCalculator() {
   const [state, setState] = useState<FormState>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [savedQuoteId, setSavedQuoteId] = useState<string | null>(null);
+  const summaryRef = useRef<HTMLDivElement>(null);
 
   const calc = useMemo(() => calculateQuote(selectedSlugs, trucks, term), [selectedSlugs, trucks, term]);
+
+  useEffect(() => {
+    if (state === "error" && summaryRef.current) {
+      summaryRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [state]);
 
   const toggleService = (slug: string) => {
     setSelectedSlugs((prev) => (prev.includes(slug) ? prev.filter((s) => s !== slug) : [...prev, slug]));
@@ -123,7 +130,18 @@ export default function QuoteCalculator() {
 
   return (
     <section id="quote" className="py-16 sm:py-24" style={{ background: "#F8FAFC" }}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <style>{`
+        .qc-no-spinner::-webkit-outer-spin-button,
+        .qc-no-spinner::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        .qc-no-spinner {
+          -moz-appearance: textfield;
+        }
+      `}</style>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-28 lg:pb-0">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-14">
           <span
@@ -167,7 +185,7 @@ export default function QuoteCalculator() {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="grid lg:grid-cols-5 gap-8 sm:gap-10 items-start">
+        <form id="quote-form" onSubmit={handleSubmit} className="grid lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-6 xl:gap-12 items-start">
           {/* Left: configuration */}
           <div className="lg:col-span-3 space-y-8 sm:space-y-10">
             {/* Services */}
@@ -178,7 +196,7 @@ export default function QuoteCalculator() {
               >
                 1. Choose Services
               </h3>
-              <div className="grid sm:grid-cols-2 gap-3">
+              <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                 {services.map((s) => {
                   const pricing = pricingServices.find((p) => p.slug === s.slug);
                   const checked = selectedSlugs.includes(s.slug);
@@ -242,7 +260,7 @@ export default function QuoteCalculator() {
                 <button
                   type="button"
                   onClick={() => setTrucks((t) => Math.max(1, t - 1))}
-                  className="w-10 h-10 rounded-lg flex items-center justify-center"
+                  className="w-11 h-11 rounded-lg flex items-center justify-center"
                   style={{ border: "1.5px solid #E2E8F0", color: "#0A1628", fontSize: "18px" }}
                 >
                   −
@@ -252,13 +270,13 @@ export default function QuoteCalculator() {
                   min={1}
                   value={trucks}
                   onChange={(e) => setTrucks(Math.max(1, parseInt(e.target.value) || 1))}
-                  className="form-input text-center"
+                  className="form-input text-center qc-no-spinner"
                   style={{ width: "90px" }}
                 />
                 <button
                   type="button"
                   onClick={() => setTrucks((t) => t + 1)}
-                  className="w-10 h-10 rounded-lg flex items-center justify-center"
+                  className="w-11 h-11 rounded-lg flex items-center justify-center"
                   style={{ border: "1.5px solid #E2E8F0", color: "#0A1628", fontSize: "18px" }}
                 >
                   +
@@ -283,7 +301,7 @@ export default function QuoteCalculator() {
                     key={t.value}
                     type="button"
                     onClick={() => setTerm(t.value)}
-                    className="px-4 py-2 rounded-full"
+                    className="px-5 py-2.5 rounded-full"
                     style={{
                       border: term === t.value ? "1.5px solid #1E6FFF" : "1.5px solid #E2E8F0",
                       background: term === t.value ? "#1E6FFF" : "white",
@@ -359,8 +377,9 @@ export default function QuoteCalculator() {
           {/* Right: sticky summary */}
           <div className="lg:col-span-2">
             <div
-              className="bg-white rounded-2xl p-6 sm:p-8 lg:sticky"
-              style={{ top: "100px", border: "1.5px solid #C8D8FF", boxShadow: "0 20px 60px rgba(30, 111, 255, 0.08)" }}
+              ref={summaryRef}
+              className="bg-white rounded-2xl p-5 sm:p-6 lg:p-6 xl:p-8 lg:sticky lg:top-20 xl:top-24"
+              style={{ border: "1.5px solid #C8D8FF", boxShadow: "0 20px 60px rgba(30, 111, 255, 0.08)" }}
             >
               <h3
                 style={{ fontFamily: "Syne, sans-serif", fontWeight: 800, fontSize: "18px", color: "#0A1628" }}
@@ -455,6 +474,51 @@ export default function QuoteCalculator() {
             </div>
           </div>
         </form>
+      </div>
+
+      {/* Mobile sticky price bar — mirrors live total, submits the same form */}
+      <div
+        className="lg:hidden fixed inset-x-0 bottom-0 z-40 flex items-center justify-between gap-4 px-4 sm:px-6"
+        style={{
+          background: "white",
+          borderTop: "1px solid #EEF2F8",
+          boxShadow: "0 -8px 24px rgba(10, 22, 40, 0.08)",
+          paddingTop: "12px",
+          paddingBottom: "calc(12px + env(safe-area-inset-bottom, 0px))",
+        }}
+      >
+        <div className="min-w-0">
+          <p
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontSize: "11px",
+              color: "#6B7A99",
+              textTransform: "uppercase",
+              letterSpacing: "0.04em",
+            }}
+          >
+            {selectedSlugs.length === 0 ? "Estimate" : "Monthly Total"}
+          </p>
+          <p
+            className="truncate"
+            style={{
+              fontFamily: "Syne, sans-serif",
+              fontWeight: 800,
+              fontSize: "20px",
+              color: selectedSlugs.length === 0 ? "#6B7A99" : "#1E6FFF",
+            }}
+          >
+            {selectedSlugs.length === 0 ? "Select a service" : formatUSD(calc.monthlyTotal)}
+          </p>
+        </div>
+        <button
+          type="submit"
+          form="quote-form"
+          disabled={state === "loading"}
+          className="btn-primary whitespace-nowrap flex-shrink-0"
+        >
+          {state === "loading" ? "Saving..." : "Get My Quote"}
+        </button>
       </div>
     </section>
   );
