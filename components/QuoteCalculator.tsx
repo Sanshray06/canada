@@ -108,7 +108,7 @@ export default function QuoteCalculator() {
             )}
           </p>
           <p style={{ color: "#6B7A99", fontFamily: "Inter, sans-serif", fontSize: "14px", lineHeight: 1.7 }} className="mb-8">
-            This is a preliminary estimate. Our team will follow up within 1 business hour to confirm final pricing for your fleet.
+            This is a preliminary estimate. Our team will follow up within 1-2 Business Days to confirm final pricing for your fleet.
           </p>
           <button
             onClick={() => {
@@ -424,8 +424,8 @@ export default function QuoteCalculator() {
                     {calc.totalDiscountPct > 0 && (
                       <div className="flex items-center justify-between">
                         <span style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#16a34a" }}>
-                          Volume + bundle + term savings
-                        </span>
+  Term commitment savings
+</span>
                         <span style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#16a34a" }}>
                           −{Math.round(calc.totalDiscountPct * 100)}%
                         </span>

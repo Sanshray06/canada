@@ -120,7 +120,7 @@ export default function ContactForm() {
                 marginBottom: "32px",
               }}
             >
-              Fill in the form and we&apos;ll get back to you within 1 business hour. Prefer to call? Reach us directly on either number below.
+              Fill in the form and we&apos;ll get back to you within 1-2 Business Days. Prefer to call? Reach us directly on either number below.
             </p>
 
             {/* Contact details */}
@@ -261,7 +261,7 @@ export default function ContactForm() {
                       marginBottom: "24px",
                     }}
                   >
-                    Our team will reach out within 1 business hour. Check your inbox for a confirmation email.
+                    Our team will reach out within 1-2 Business Days. Check your inbox for a confirmation email.
                   </p>
                   <button
                     onClick={() => setState("idle")}

@@ -30,7 +30,7 @@ export default function Footer() {
                   color: "white",
                 }}
               >
-                CargoSync<span style={{ color: "#1E6FFF" }}>Tech</span>
+                CargoSync
               </span>
             </div>
             <p
@@ -191,45 +191,47 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div
-          className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 sm:pt-8"
-          style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
-        >
-          <p
-            style={{
-              color: "rgba(255,255,255,0.35)",
-              fontSize: "13px",
-              fontFamily: "Inter, sans-serif",
-              textAlign: "center",
-            }}
-          >
-            © {new Date().getFullYear()} CargoSync. All rights reserved.
-          </p>
-          <div className="flex gap-4 sm:gap-6">
-            {[
-  { label: "Privacy Policy", href: "/privacy-policy" },
-  { label: "Terms of Service", href: "/terms-of-service" },
-].map((l) => (
-              <a key={l.label} href={l.href}
-                style={{
-                  color: "rgba(255,255,255,0.35)",
-                  fontSize: "13px",
-                  fontFamily: "Inter, sans-serif",
-                  textDecoration: "none",
-                  transition: "color 0.2s",
-                }}
-                onMouseEnter={(e) =>
-                  ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.7)")
-                }
-                onMouseLeave={(e) =>
-                  ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.35)")
-                }
-              >
-                {l.label}
-              </a>
-            ))}
-          </div>
-        </div>
+        {/* Bottom bar */}
+<div
+  className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6 sm:pt-8 pb-12 lg:pb-0" // Added pb-12 here for clean bottom spacing on all screens
+  style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
+>
+  <p
+    style={{
+      color: "rgba(255,255,255,0.35)",
+      fontSize: "13px",
+      fontFamily: "Inter, sans-serif",
+      textAlign: "center",
+    }}
+    className="md:text-left"
+  >
+    © {new Date().getFullYear()} CargoSync. All rights reserved.
+  </p>
+  <div className="flex gap-4 sm:gap-6 flex-shrink-0">
+    {[
+      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Terms of Service", href: "/terms-of-service" },
+    ].map((l) => (
+      <a key={l.label} href={l.href}
+        style={{
+          color: "rgba(255,255,255,0.35)",
+          fontSize: "13px",
+          fontFamily: "Inter, sans-serif",
+          textDecoration: "none",
+          transition: "color 0.2s",
+        }}
+        onMouseEnter={(e) =>
+          ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.7)")
+        }
+        onMouseLeave={(e) =>
+          ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.35)")
+        }
+      >
+        {l.label}
+      </a>
+    ))}
+  </div>
+</div>
       </div>
     </footer>
   );

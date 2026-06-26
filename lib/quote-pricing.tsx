@@ -13,41 +13,17 @@ export const pricingServices: PricingService[] = [
   { slug: "scalable-dispatch-teams", basePerTruckMonthly: 179 },
 ];
 
-const truckVolumeDiscounts = [
-  { minTrucks: 10, discount: 0.15 },
-  { minTrucks: 6, discount: 0.1 },
-  { minTrucks: 3, discount: 0.05 },
-  { minTrucks: 1, discount: 0 },
-];
-
-const bundleDiscounts = [
-  { minServices: 5, discount: 0.15 },
-  { minServices: 3, discount: 0.1 },
-  { minServices: 1, discount: 0 },
-];
-
+// Only discount left in the system — based purely on commitment length
 export const termOptions = [
   { value: "monthly", label: "Month-to-Month", months: 1, discount: 0 },
-  { value: "1year", label: "1 Year", months: 12, discount: 0.1 },
-  { value: "2year", label: "2 Years", months: 24, discount: 0.15 },
-  { value: "3year", label: "3+ Years", months: 36, discount: 0.2 },
+  { value: "1year", label: "1 Year", months: 12, discount: 0.07 },
+  { value: "2year", label: "2 Years", months: 24, discount: 0.10 },
+  { value: "3year", label: "3+ Years", months: 36, discount: 0.12 },
 ];
-
-function getVolumeDiscount(trucks: number) {
-  for (const tier of truckVolumeDiscounts) if (trucks >= tier.minTrucks) return tier.discount;
-  return 0;
-}
-
-function getBundleDiscount(serviceCount: number) {
-  for (const tier of bundleDiscounts) if (serviceCount >= tier.minServices) return tier.discount;
-  return 0;
-}
 
 export interface QuoteCalculation {
   baseMonthlyPerTruck: number;
   listMonthly: number;
-  volumeDiscount: number;
-  bundleDiscount: number;
   termDiscount: number;
   totalDiscountPct: number;
   monthlyTotal: number;
@@ -61,12 +37,10 @@ export function calculateQuote(serviceSlugs: string[], trucks: number, termValue
   const baseMonthlyPerTruck = selected.reduce((sum, s) => sum + s.basePerTruckMonthly, 0);
   const listMonthly = baseMonthlyPerTruck * trucks;
 
-  const volumeDiscount = getVolumeDiscount(trucks);
-  const bundleDiscount = getBundleDiscount(selected.length);
   const term = termOptions.find((t) => t.value === termValue) || termOptions[0];
   const termDiscount = term.discount;
+  const totalDiscountPct = termDiscount;
 
-  const totalDiscountPct = Math.min(volumeDiscount + bundleDiscount + termDiscount, 0.35);
   const monthlyTotal = Math.round(listMonthly * (1 - totalDiscountPct));
   const termMonths = term.months;
   const contractTotal = Math.round(monthlyTotal * termMonths);
@@ -75,8 +49,6 @@ export function calculateQuote(serviceSlugs: string[], trucks: number, termValue
   return {
     baseMonthlyPerTruck,
     listMonthly,
-    volumeDiscount,
-    bundleDiscount,
     termDiscount,
     totalDiscountPct,
     monthlyTotal,

@@ -107,10 +107,10 @@ export default function Hero() {
         <div className="w-16 h-16 lg:w-24 lg:h-24 rounded-full border-2" style={{ borderColor: "#1E6FFF" }} />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-24 sm:pt-28 pb-24 sm:pb-32 w-full">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-24 sm:pb-32 w-full">
         <div className="max-w-3xl">
           {/* Eyebrow */}
-          <div
+          {/* <div
             className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-6 sm:mb-8"
             style={{
               background: "rgba(30, 111, 255, 0.15)",
@@ -130,7 +130,7 @@ export default function Hero() {
             >
               Trucking Dispatch & Back-Office Support
             </span>
-          </div>
+          </div> */}
 
           {/* Headline */}
           <h1
