@@ -12,6 +12,7 @@ function formatUSD(n: number) {
 export default function QuoteCalculator() {
   const [selectedSlugs, setSelectedSlugs] = useState<string[]>([]);
   const [trucks, setTrucks] = useState(1);
+  const [dispatchers, setDispatchers] = useState(1);
   const [term, setTerm] = useState("monthly");
   const [contact, setContact] = useState({ name: "", email: "", phone: "", company: "", message: "" });
   const [state, setState] = useState<FormState>("idle");
@@ -19,7 +20,7 @@ export default function QuoteCalculator() {
   const [savedQuoteId, setSavedQuoteId] = useState<string | null>(null);
   const summaryRef = useRef<HTMLDivElement>(null);
 
-  const calc = useMemo(() => calculateQuote(selectedSlugs, trucks, term), [selectedSlugs, trucks, term]);
+  const calc = useMemo(() => calculateQuote(selectedSlugs, dispatchers, term), [selectedSlugs, dispatchers, term]);
 
   useEffect(() => {
     if (state === "error" && summaryRef.current) {
@@ -53,6 +54,7 @@ export default function QuoteCalculator() {
           ...contact,
           services: selectedSlugs,
           trucks,
+          dispatchers,
           term,
           monthlyTotal: calc.monthlyTotal,
           contractTotal: calc.contractTotal,
@@ -115,6 +117,7 @@ export default function QuoteCalculator() {
               setState("idle");
               setSelectedSlugs([]);
               setTrucks(1);
+              setDispatchers(1);
               setTerm("monthly");
               setContact({ name: "", email: "", phone: "", company: "", message: "" });
             }}
@@ -181,7 +184,7 @@ export default function QuoteCalculator() {
               fontFamily: "Inter, sans-serif",
             }}
           >
-            Select the services you need, your fleet size, and a commitment term, get an instant estimate.
+            Select the services you need, your team size, and a commitment term, get an instant estimate.
           </p>
         </div>
 
@@ -240,7 +243,7 @@ export default function QuoteCalculator() {
                         {s.title}
                       </p>
                       <p style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", color: "#6B7A99" }}>
-                        from {pricing ? formatUSD(pricing.basePerTruckMonthly) : ""}/truck/mo
+                        from {pricing ? formatUSD(pricing.basePerDispatcherMonthly) : ""}/dispatcher/mo
                       </p>
                     </button>
                   );
@@ -248,42 +251,84 @@ export default function QuoteCalculator() {
               </div>
             </div>
 
-            {/* Trucks */}
+            {/* Fleet & Team */}
             <div>
               <h3
                 style={{ fontFamily: "Syne, sans-serif", fontWeight: 700, fontSize: "15px", color: "#0A1628" }}
                 className="mb-4"
               >
-                2. Fleet Size
+                2. Fleet & Team Size
               </h3>
-              <div className="flex items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => setTrucks((t) => Math.max(1, t - 1))}
-                  className="w-11 h-11 rounded-lg flex items-center justify-center"
-                  style={{ border: "1.5px solid #E2E8F0", color: "#0A1628", fontSize: "18px" }}
-                >
-                  −
-                </button>
-                <input
-                  type="number"
-                  min={1}
-                  value={trucks}
-                  onChange={(e) => setTrucks(Math.max(1, parseInt(e.target.value) || 1))}
-                  className="form-input text-center qc-no-spinner"
-                  style={{ width: "90px" }}
-                />
-                <button
-                  type="button"
-                  onClick={() => setTrucks((t) => t + 1)}
-                  className="w-11 h-11 rounded-lg flex items-center justify-center"
-                  style={{ border: "1.5px solid #E2E8F0", color: "#0A1628", fontSize: "18px" }}
-                >
-                  +
-                </button>
-                <span style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B7A99" }}>
-                  {trucks === 1 ? "truck" : "trucks"}
-                </span>
+              <div className="space-y-5">
+                <div>
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setTrucks((t) => Math.max(1, t - 1))}
+                      className="w-11 h-11 rounded-lg flex items-center justify-center"
+                      style={{ border: "1.5px solid #E2E8F0", color: "#0A1628", fontSize: "18px" }}
+                    >
+                      −
+                    </button>
+                    <input
+                      type="number"
+                      min={1}
+                      value={trucks}
+                      onChange={(e) => setTrucks(Math.max(1, parseInt(e.target.value) || 1))}
+                      className="form-input text-center qc-no-spinner"
+                      style={{ width: "90px" }}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setTrucks((t) => t + 1)}
+                      className="w-11 h-11 rounded-lg flex items-center justify-center"
+                      style={{ border: "1.5px solid #E2E8F0", color: "#0A1628", fontSize: "18px" }}
+                    >
+                      +
+                    </button>
+                    <span style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B7A99" }}>
+                      {trucks === 1 ? "truck" : "trucks"}
+                    </span>
+                  </div>
+                  <p style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", color: "#94A3B8" }} className="mt-1.5">
+                    Fleet size - for our records, doesn't affect pricing.
+                  </p>
+                </div>
+
+                <div>
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setDispatchers((d) => Math.max(1, d - 1))}
+                      className="w-11 h-11 rounded-lg flex items-center justify-center"
+                      style={{ border: "1.5px solid #E2E8F0", color: "#0A1628", fontSize: "18px" }}
+                    >
+                      −
+                    </button>
+                    <input
+                      type="number"
+                      min={1}
+                      value={dispatchers}
+                      onChange={(e) => setDispatchers(Math.max(1, parseInt(e.target.value) || 1))}
+                      className="form-input text-center qc-no-spinner"
+                      style={{ width: "90px" }}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setDispatchers((d) => d + 1)}
+                      className="w-11 h-11 rounded-lg flex items-center justify-center"
+                      style={{ border: "1.5px solid #E2E8F0", color: "#0A1628", fontSize: "18px" }}
+                    >
+                      +
+                    </button>
+                    <span style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B7A99" }}>
+                      {dispatchers === 1 ? "dispatcher" : "dispatchers"} required
+                    </span>
+                  </div>
+                  <p style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", color: "#94A3B8" }} className="mt-1.5">
+                    This is what drives your pricing below.
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -405,7 +450,7 @@ export default function QuoteCalculator() {
                             {s.title}
                           </span>
                           <span style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#6B7A99" }}>
-                            {formatUSD(p.basePerTruckMonthly)}/truck
+                            {formatUSD(p.basePerDispatcherMonthly)}/dispatcher
                           </span>
                         </div>
                       );
@@ -415,7 +460,7 @@ export default function QuoteCalculator() {
                   <div className="pt-4 space-y-1.5" style={{ borderTop: "1px solid #EEF2F8" }}>
                     <div className="flex items-center justify-between">
                       <span style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#6B7A99" }}>
-                        {trucks} {trucks === 1 ? "truck" : "trucks"} × {formatUSD(calc.baseMonthlyPerTruck)}
+                        {dispatchers} {dispatchers === 1 ? "dispatcher" : "dispatchers"} × {formatUSD(calc.baseMonthlyPerDispatcher)}
                       </span>
                       <span style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#6B7A99" }}>
                         {formatUSD(calc.listMonthly)}
@@ -424,8 +469,8 @@ export default function QuoteCalculator() {
                     {calc.totalDiscountPct > 0 && (
                       <div className="flex items-center justify-between">
                         <span style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#16a34a" }}>
-  Term commitment savings
-</span>
+                          Term commitment savings
+                        </span>
                         <span style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#16a34a" }}>
                           −{Math.round(calc.totalDiscountPct * 100)}%
                         </span>
@@ -476,7 +521,7 @@ export default function QuoteCalculator() {
         </form>
       </div>
 
-      {/* Mobile sticky price bar — mirrors live total, submits the same form */}
+      {/* Mobile sticky price bar - mirrors live total, submits the same form */}
       <div
         className="lg:hidden fixed inset-x-0 bottom-0 z-40 flex items-center justify-between gap-4 px-4 sm:px-6"
         style={{

@@ -1,19 +1,19 @@
 export interface PricingService {
   slug: string;
-  basePerTruckMonthly: number; // USD
+  basePerDispatcherMonthly: number; // USD per dispatcher per month
 }
 
-// Edit these rates anytime — everything else recalculates automatically
+// Edit these rates anytime - everything else recalculates automatically
 export const pricingServices: PricingService[] = [
-  { slug: "freight-dispatch", basePerTruckMonthly: 549 },
-  { slug: "back-office-administration", basePerTruckMonthly: 199 },
-  { slug: "cross-border-coordination", basePerTruckMonthly: 149 },
-  { slug: "driver-customer-communication", basePerTruckMonthly: 99 },
-  { slug: "fleet-tracking-monitoring", basePerTruckMonthly: 129 },
-  { slug: "scalable-dispatch-teams", basePerTruckMonthly: 179 },
+  { slug: "freight-dispatch", basePerDispatcherMonthly: 549 },
+  { slug: "back-office-administration", basePerDispatcherMonthly: 199 },
+  { slug: "cross-border-coordination", basePerDispatcherMonthly: 149 },
+  { slug: "driver-customer-communication", basePerDispatcherMonthly: 99 },
+  { slug: "fleet-tracking-monitoring", basePerDispatcherMonthly: 129 },
+  { slug: "scalable-dispatch-teams", basePerDispatcherMonthly: 179 },
 ];
 
-// Only discount left in the system — based purely on commitment length
+// Only discount left in the system - based purely on commitment length
 export const termOptions = [
   { value: "monthly", label: "Month-to-Month", months: 1, discount: 0 },
   { value: "1year", label: "1 Year", months: 12, discount: 0.07 },
@@ -22,7 +22,7 @@ export const termOptions = [
 ];
 
 export interface QuoteCalculation {
-  baseMonthlyPerTruck: number;
+  baseMonthlyPerDispatcher: number;
   listMonthly: number;
   termDiscount: number;
   totalDiscountPct: number;
@@ -32,10 +32,12 @@ export interface QuoteCalculation {
   savingsVsListPrice: number;
 }
 
-export function calculateQuote(serviceSlugs: string[], trucks: number, termValue: string): QuoteCalculation {
+// Price = (sum of selected service rates) × dispatchers, then term discount applied.
+// Fleet size (trucks) is informational only - it does NOT affect price.
+export function calculateQuote(serviceSlugs: string[], dispatchers: number, termValue: string): QuoteCalculation {
   const selected = pricingServices.filter((s) => serviceSlugs.includes(s.slug));
-  const baseMonthlyPerTruck = selected.reduce((sum, s) => sum + s.basePerTruckMonthly, 0);
-  const listMonthly = baseMonthlyPerTruck * trucks;
+  const baseMonthlyPerDispatcher = selected.reduce((sum, s) => sum + s.basePerDispatcherMonthly, 0);
+  const listMonthly = baseMonthlyPerDispatcher * dispatchers;
 
   const term = termOptions.find((t) => t.value === termValue) || termOptions[0];
   const termDiscount = term.discount;
@@ -47,7 +49,7 @@ export function calculateQuote(serviceSlugs: string[], trucks: number, termValue
   const savingsVsListPrice = Math.round((listMonthly - monthlyTotal) * termMonths);
 
   return {
-    baseMonthlyPerTruck,
+    baseMonthlyPerDispatcher,
     listMonthly,
     termDiscount,
     totalDiscountPct,

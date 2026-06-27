@@ -1,4 +1,7 @@
 "use client";
+
+import Image from "next/image";
+
 export default function Footer() {
   return (
     <footer
@@ -16,11 +19,14 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-4 sm:mb-5">
               <div
                 className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: "#1E6FFF" }}
               >
-                <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5 fill-white">
-                  <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-4 7c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v5H8v-5z" />
-                </svg>
+                <Image
+                            src="/logo.png"
+                            alt="CargoSync logo"
+                            width={50}
+                            height={50}
+                            className="rounded-xl flex-shrink-0"
+                          />
               </div>
               <span
                 style={{

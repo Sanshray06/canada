@@ -11,6 +11,7 @@ interface Quote {
   company: string | null;
   services: string[];
   trucks: number;
+  dispatchers: number;
   term: string;
   monthly_total: number;
   contract_total: number;
@@ -52,9 +53,10 @@ export default function AdminQuotesPage() {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch("/api/admin/quotes", { 
+      const res = await fetch("/api/admin/quotes", {
         headers: { "x-admin-token": t },
-        cache: "no-store"});
+        cache: "no-store",
+      });
       if (res.status === 401) {
         setToken("");
         setLoginError("Session expired. Please log in again.");
@@ -108,7 +110,7 @@ export default function AdminQuotesPage() {
 
   return (
     <div className="min-h-screen relative" style={{ background: "#F8FAFC" }}>
-      {/* Dashboard — always rendered, blurred and inert until unlocked */}
+      {/* Dashboard - always rendered, blurred and inert until unlocked */}
       <div
         style={{
           filter: token ? "none" : "blur(8px)",
@@ -124,16 +126,15 @@ export default function AdminQuotesPage() {
             >
               Quote Requests
             </h1>
-            <span style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B7A99" }}>{quotes.length} total</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B7A99" }}>{quotes.length} total</span>
-            <button
-              onClick={() => fetchQuotes(token)}
-              style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#1E6FFF", background: "none", border: "1px solid #1E6FFF", borderRadius: "8px", padding: "4px 10px", cursor: "pointer" }}
-            >
-              Refresh
-            </button>
+            <div className="flex items-center gap-3">
+              <span style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#6B7A99" }}>{quotes.length} total</span>
+              <button
+                onClick={() => fetchQuotes(token)}
+                style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#1E6FFF", background: "none", border: "1px solid #1E6FFF", borderRadius: "8px", padding: "4px 10px", cursor: "pointer" }}
+              >
+                Refresh
+              </button>
+            </div>
           </div>
 
           {loading && <p style={{ fontFamily: "Inter, sans-serif", color: "#6B7A99" }}>Loading quotes...</p>}
@@ -157,7 +158,7 @@ export default function AdminQuotesPage() {
                 <table className="w-full" style={{ borderCollapse: "collapse" }}>
                   <thead>
                     <tr style={{ background: "#F8FAFC", borderBottom: "1px solid #EEF2F8" }}>
-                      {["Date", "Contact", "Company", "Services", "Trucks", "Term", "Monthly", "Contract Total", ""].map((h) => (
+                      {["Date", "Contact", "Company", "Services", "Trucks", "Dispatchers", "Term", "Monthly", "Contract Total", ""].map((h) => (
                         <th
                           key={h}
                           style={{
@@ -189,7 +190,7 @@ export default function AdminQuotesPage() {
                           <div style={{ color: "#6B7A99" }}>{q.phone}</div>
                         </td>
                         <td style={{ padding: "14px 16px", fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#334155" }}>
-                          {q.company || "—"}
+                          {q.company || "-"}
                         </td>
                         <td style={{ padding: "14px 16px" }}>
                           <div className="flex flex-wrap gap-1" style={{ maxWidth: "220px" }}>
@@ -214,6 +215,9 @@ export default function AdminQuotesPage() {
                         </td>
                         <td style={{ padding: "14px 16px", fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#334155" }}>
                           {q.trucks}
+                        </td>
+                        <td style={{ padding: "14px 16px", fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#334155" }}>
+                          {q.dispatchers ?? "-"}
                         </td>
                         <td style={{ padding: "14px 16px", fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#334155", whiteSpace: "nowrap" }}>
                           {termLabels[q.term] || q.term}
